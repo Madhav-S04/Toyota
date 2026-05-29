@@ -1,0 +1,229 @@
+.sales-officer-dashboard {
+  min-height: 100vh;
+  padding: clamp(18px, 4vw, 40px);
+  background:
+    linear-gradient(135deg, rgba(0, 124, 137, 0.1), transparent 30%),
+    linear-gradient(315deg, rgba(215, 25, 32, 0.08), transparent 30%),
+    #f4f6f8;
+}
+
+.sales-officer-dashboard .header {
+  display: flex;
+  max-width: 1060px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0 auto 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: clamp(20px, 3vw, 30px);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.sales-officer-dashboard h1 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  line-height: 1.08;
+}
+
+.welcome-message {
+  max-width: 1060px;
+  margin: 0 auto 18px;
+  border: 1px solid rgba(0, 124, 137, 0.18);
+  border-radius: 8px;
+  padding: 18px 20px;
+  background: #eefafb;
+  box-shadow: var(--shadow-sm);
+}
+
+.welcome-message p {
+  margin: 0;
+  color: #155e63;
+  line-height: 1.6;
+}
+
+.sales-officer-dashboard .content {
+  max-width: 1060px;
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: clamp(18px, 3vw, 30px);
+  box-shadow: var(--shadow-sm);
+}
+
+.sales-calculator h3 {
+  margin: 0 0 24px;
+  color: var(--ink);
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+}
+
+.month-selector {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 26px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--surface-soft);
+}
+
+.month-selector label {
+  color: var(--graphite);
+  font-weight: 800;
+}
+
+.month-selector input {
+  max-width: 210px;
+}
+
+.sales-input {
+  margin-bottom: 26px;
+}
+
+.sales-input h4,
+.incentive-details h4,
+.total-cars h4 {
+  margin: 0 0 14px;
+  color: var(--graphite);
+  font-size: 1rem;
+}
+
+.sales-input table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.sales-input th,
+.sales-input td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+.sales-input th {
+  background: var(--graphite);
+  color: #fff;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+}
+
+.sales-input tr:last-child td {
+  border-bottom: 0;
+}
+
+.sales-input tbody tr:hover {
+  background: #f9fbfd;
+}
+
+.sales-input input {
+  max-width: 120px;
+}
+
+.summary-section {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.7fr) minmax(260px, 1.6fr);
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.total-cars,
+.incentive-details {
+  border-radius: 8px;
+  padding: 22px;
+}
+
+.total-cars {
+  display: grid;
+  align-content: center;
+  border: 1px solid rgba(215, 25, 32, 0.2);
+  background: #fff5f5;
+  text-align: center;
+}
+
+.total-cars .value {
+  margin: 0;
+  color: var(--primary);
+  font-size: clamp(3rem, 7vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.incentive-details {
+  border: 1px solid rgba(22, 130, 83, 0.2);
+  background: #f0fdf7;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(22, 130, 83, 0.16);
+  color: var(--graphite);
+}
+
+.detail-item:last-child {
+  border-bottom: 0;
+}
+
+.detail-item.total {
+  margin-top: 4px;
+  border-top: 2px solid rgba(22, 130, 83, 0.22);
+  border-bottom: 0;
+  font-size: 1.08rem;
+  font-weight: 900;
+}
+
+.detail-item .highlight {
+  color: var(--green);
+  font-weight: 900;
+  text-align: right;
+}
+
+.detail-item.total .highlight {
+  color: var(--primary);
+}
+
+.save-btn {
+  width: 100%;
+  background: var(--green);
+  color: #fff;
+  box-shadow: 0 12px 24px rgba(22, 130, 83, 0.18);
+}
+
+.save-btn:hover:not(:disabled) {
+  background: #11683f;
+}
+
+@media (max-width: 760px) {
+  .sales-officer-dashboard .header,
+  .month-selector,
+  .detail-item {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .month-selector input {
+    max-width: none;
+  }
+
+  .summary-section {
+    grid-template-columns: 1fr;
+  }
+
+  .sales-officer-dashboard .content {
+    overflow-x: auto;
+  }
+
+  .sales-input table {
+    min-width: 560px;
+  }
+}
