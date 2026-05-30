@@ -95,6 +95,12 @@ If PowerShell blocks `npm`, use:
 npm.cmd run dev
 ```
 
+## Deployment
+
+The application is deployed on:
+- **Frontend**: Vercel (https://toyota-kohl-six.vercel.app/)
+- **Backend API**: Render (https://nippon-toyota-backend.onrender.com)
+
 ## User Roles
 
 ### Sales Officer
@@ -129,20 +135,33 @@ From the `backend/` folder, run this Node command after setting your `.env` valu
 node -e "require('dotenv').config(); const mongoose=require('mongoose'); const bcrypt=require('bcryptjs'); const User=require('./models/User'); (async()=>{await mongoose.connect(process.env.MONGO_URI); const password=await bcrypt.hash('Admin@123',10); await User.findOneAndUpdate({email:'admin@example.com'},{name:'Admin User',email:'admin@example.com',password,role:'admin'},{upsert:true,new:true}); console.log('Admin created: admin@example.com / Admin@123'); await mongoose.disconnect();})();"
 ```
 
-Demo admin credentials:
+### Demo Credentials for Local Testing
+
+Admin credentials:
 
 ```text
 Email: admin@example.com
 Password: Admin@123
 ```
 
-You can create a Sales Officer from the Register page, or use this example:
+Sales Officer example:
 
 ```text
 Name: Sales Officer
 Email: sales@example.com
 Password: Sales@123
 ```
+
+### Demo Credentials for Production (Vercel)
+
+When accessing the app through Vercel URL:
+
+```text
+Email: admin@gmail.com
+Password: 1234
+```
+
+You can also create additional Sales Officer accounts from the Register page.
 
 ## Example Admin Data
 
