@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function CarInventory() {
   const [carModels, setCarModels] = useState([]);
   const [formData, setFormData] = useState({
@@ -13,7 +15,7 @@ export default function CarInventory() {
   const fetchCarModels = useCallback(async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5000/api/admin/car-models", {
+      const response = await fetch(`${API_URL}/api/admin/car-models`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -44,8 +46,8 @@ export default function CarInventory() {
       const token = localStorage.getItem("token");
       const method = editingId ? "PUT" : "POST";
       const url = editingId
-        ? `http://localhost:5000/api/admin/car-models/${editingId}`
-        : "http://localhost:5000/api/admin/car-models";
+        ? `${API_URL}/api/admin/car-models/${editingId}`
+        : `${API_URL}/api/admin/car-models`;
 
       const response = await fetch(url, {
         method,
@@ -77,7 +79,7 @@ export default function CarInventory() {
     if (window.confirm("Are you sure?")) {
       try {
         const token = localStorage.getItem("token");
-        await fetch(`http://localhost:5000/api/admin/car-models/${id}`, {
+        await fetch(`${API_URL}/api/admin/car-models/${id}`, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,

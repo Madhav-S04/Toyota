@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function IncentiveSlabConfig() {
   const [slabs, setSlabs] = useState([]);
   const [formData, setFormData] = useState({
@@ -14,7 +16,7 @@ export default function IncentiveSlabConfig() {
   const fetchSlabs = useCallback(async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5000/api/admin/incentive-slabs", {
+      const response = await fetch(`${API_URL}/api/admin/incentive-slabs`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -60,8 +62,8 @@ export default function IncentiveSlabConfig() {
       const token = localStorage.getItem("token");
       const method = editingId ? "PUT" : "POST";
       const url = editingId
-        ? `http://localhost:5000/api/admin/incentive-slabs/${editingId}`
-        : "http://localhost:5000/api/admin/incentive-slabs";
+        ? `${API_URL}/api/admin/incentive-slabs/${editingId}`
+        : `${API_URL}/api/admin/incentive-slabs`;
 
       const response = await fetch(url, {
         method,
@@ -98,7 +100,7 @@ export default function IncentiveSlabConfig() {
     if (window.confirm("Are you sure?")) {
       try {
         const token = localStorage.getItem("token");
-        await fetch(`http://localhost:5000/api/admin/incentive-slabs/${id}`, {
+        await fetch(`${API_URL}/api/admin/incentive-slabs/${id}`, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,

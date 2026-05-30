@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function SalesCalculator() {
   const [month, setMonth] = useState(() => {
     const today = new Date();
@@ -23,7 +25,7 @@ export default function SalesCalculator() {
   const fetchCarModels = useCallback(async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5000/api/sales/car-models", {
+      const response = await fetch(`${API_URL}/api/sales/car-models`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -49,7 +51,7 @@ export default function SalesCalculator() {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/sales/sales-record?month=${month}`,
+        `${API_URL}/api/sales/sales-record?month=${month}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -119,7 +121,7 @@ export default function SalesCalculator() {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        "http://localhost:5000/api/sales/calculate-incentive",
+        `${API_URL}/api/sales/calculate-incentive`,
         {
           method: "POST",
           headers: {
@@ -143,7 +145,7 @@ export default function SalesCalculator() {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5000/api/sales/sales-record", {
+      const response = await fetch(`${API_URL}/api/sales/sales-record`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
